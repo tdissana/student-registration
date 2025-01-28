@@ -48,8 +48,17 @@ void DBManager::updateStudentId(int oldId, int newId)
         if (studentItr != studentDatabase.end())
         {
             Student *student = studentItr->second;
-            student->setId(newId);
-            std::cout << "Student Account Updated Successfully" << std::endl;
+            if (student != nullptr)
+            {
+                student->setId(newId);
+                studentDatabase.insert(std::make_pair(newId, student));
+                studentDatabase.erase(studentItr);
+                std::cout << "Student Account Updated Successfully" << std::endl;
+            }
+            else
+            {
+                std::cout << "Error: Student Id: " << oldId << " data corrupted" << std::endl;
+            }
         }
         else
         {
@@ -64,8 +73,15 @@ void DBManager::updateStudentName(int id, std::string newName)
     if (studentItr != studentDatabase.end())
     {
         Student *student = studentItr->second;
-        student->setName(newName);
-        std::cout << "Student Account Updated Successfully" << std::endl;
+        if (student != nullptr)
+        {
+            student->setName(newName);
+            std::cout << "Student Account Updated Successfully" << std::endl;
+        }
+        else
+        {
+            std::cout << "Error: Student Id: " << id << " data corrupted" << std::endl;
+        }
     }
     else
     {
@@ -79,10 +95,28 @@ void DBManager::viewStudentById(int id)
     if (studentItr != studentDatabase.end())
     {
         Student *student = studentItr->second;
-        std::cout << "Student Id: " << student->getId() << ", Student Name: " << student->getName() << std::endl;
+        if (student != nullptr)
+        {
+            std::cout << "Student Id: " << student->getId() << ", Student Name: " << student->getName() << std::endl;
+        }
+        else
+        {
+            std::cout << "Error: Student Id: " << id << " data corrupted" << std::endl;
+        }
     }
     else
     {
         std::cout << "Error: Student Id: " << id << " doesn't exist" << std::endl;
+    }
+}
+
+void DBManager::eraseAllData()
+{
+    for (auto studentItr = studentDatabase.begin(); studentItr != studentDatabase.end(); studentItr++)
+    {
+        Student* student = studentItr->second;
+        delete student;
+        student = nullptr;
+        studentDatabase.erase(studentItr);
     }
 }

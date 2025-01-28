@@ -16,5 +16,6 @@ namespace registration
             void updateStudentId(int oldId, int newId);
             void updateStudentName(int id, std::string newName);
             void viewStudentById(int id);
+            void eraseAllData();
     };
 }

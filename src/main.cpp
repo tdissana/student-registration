@@ -5,7 +5,7 @@ using namespace registration;
 
 int main(int argc, char *argv[])
 {
-    App* app = new App();
-    app->run();
+    App app = App();
+    app.run();
     return 0;
 }

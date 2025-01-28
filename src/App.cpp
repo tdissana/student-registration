@@ -87,7 +87,7 @@ void App::updateStudent()
     std::cout << "Select Update Option" << std::endl;
     std::cout << "1. Update Student Id" << std::endl;
     std::cout << "2. Update Student Name" << std::endl;
-    std::cout << "Enter your update choice: " << std::endl;
+    std::cout << "Enter your update choice: ";
     int updateChoice = 0;
     std::cin >> updateChoice;
 
@@ -105,6 +105,7 @@ void App::updateStudent()
         int id;
         std::string newName;
         std::cout << "Enter Id: ";
+        std::cin >> id;
         std::cout << "Enter New Name: ";
         std::cin >> newName;
         dbManager.updateStudentName(id, newName);
@@ -129,6 +130,7 @@ void App::viewStudent()
 int App::exit()
 {
     std::cout << "Exiting the system......................" << std::endl;
+    dbManager.eraseAllData();
     std::cout << "===============Thank You!===============" << std::endl;
     return 0;
 }
