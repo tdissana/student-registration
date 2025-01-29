@@ -1,6 +1,7 @@
 #pragma once
-#include <StudentManager.hpp>
+#include <DBManager.hpp>
 #include <Defs.hpp>
+#include <string>
 
 namespace registration
 {
@@ -15,8 +16,8 @@ namespace registration
         void updateStudent();
         void viewStudent();
         void exit();
-
-        StudentManager studentManager;
+        
+        DBManager dbManager = DBManager("localhost", "root", "abcdefghi", "student_db");
 
     public:
         void run();

@@ -11,12 +11,12 @@ namespace registration
             std::string studentName;
 
         public:
-            Student(int id, std::string name);
+            Student(int id, const std::string& name);
 
             int getId();
             std::string getName();
 
             void setId(int id);
-            void setName(std::string name);
+            void setName(const std::string& name);
     };
 }

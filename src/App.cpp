@@ -1,5 +1,6 @@
 #include <App.hpp>
 #include <iostream>
+#include <Utils.hpp>
 
 using namespace registration;
 
@@ -16,9 +17,7 @@ void App::showMenu()
 
 Choice App::getChoice()
 {
-    int choice{};
-    std::cout << "Enter your choice: ";
-    std::cin >> choice;
+    int choice = utilities::Utility::getValidInt("Enter your choice: ");
     return static_cast<Choice>(choice);
 }
 
@@ -61,23 +60,19 @@ void App::run()
 void App::createStudent()
 {
     std::cout << "Creating a Student Account.............." << std::endl;
-    int id;
+    int id = utilities::Utility::getValidInt("Enter Id: ");
     std::string name;
-    std::cout << "Enter Id: ";
-    std::cin >> id;
     std::cout << "Enter Name: ";
     std::cin >> name;
-    studentManager.addStudent(id, name);
+    dbManager.addStudent(id, name);
     run();
 }
 
 void App::removeStudent()
 {
     std::cout << "Removing a Student Account.............." << std::endl;
-    int id;
-    std::cout << "Enter Id: ";
-    std::cin >> id;
-    studentManager.removeStudentById(id);
+    int id = utilities::Utility::getValidInt("Enter Id: ");
+    dbManager.removeStudentById(id);
     run();
 }
 
@@ -93,22 +88,17 @@ void App::updateStudent()
 
     if (updateChoice == 1)
     {
-        int oldId, newId;
-        std::cout << "Enter Old Id: ";
-        std::cin >> oldId;
-        std::cout << "Enter New Id: ";
-        std::cin >> newId;
-        studentManager.updateStudentId(oldId, newId);
+        int oldId = utilities::Utility::getValidInt("Enter Old Id: ");
+        int newId = utilities::Utility::getValidInt("Enter New Id: ");
+        dbManager.updateStudentId(oldId, newId);
     }
     else if (updateChoice == 2)
     {
-        int id;
+        int id = utilities::Utility::getValidInt("Enter Id: ");
         std::string newName;
-        std::cout << "Enter Id: ";
-        std::cin >> id;
         std::cout << "Enter New Name: ";
         std::cin >> newName;
-        studentManager.updateStudentName(id, newName);
+        dbManager.updateStudentName(id, newName);
     }
     else
     {
@@ -120,16 +110,13 @@ void App::updateStudent()
 void App::viewStudent()
 {
     std::cout << "Viewing a Student Account..............." << std::endl;
-    int id;
-    std::cout << "Enter Id: ";
-    std::cin >> id;
-    studentManager.viewStudentById(id);
+    int id = utilities::Utility::getValidInt("Enter Id: ");
+    dbManager.viewStudentById(id);
     run();
 }
 
 void App::exit()
 {
     std::cout << "Exiting the system......................" << std::endl;
-    studentManager.eraseAllData();
     std::cout << "===============Thank You!===============" << std::endl;
 }

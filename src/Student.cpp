@@ -2,7 +2,7 @@
 
 using namespace registration;
 
-Student::Student(int id, std::string name) : studentId(id), studentName(name) {};
+Student::Student(int id, const std::string& name) : studentId(id), studentName(name) {};
 
 int Student::getId()
 {
@@ -18,7 +18,7 @@ void Student::setId(int id)
     this->studentId = id;
 }
 
-void Student::setName(std::string name)
+void Student::setName(const std::string& name)
 {
     this->studentName = name;
 }
