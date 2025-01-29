@@ -11,5 +11,11 @@ namespace registration
         VIEW   = 4,
         EXIT   = 5
     };
+
+    enum UpdateChoice
+    {
+        UPDATE_ID = 1,
+        UPDATE_NAME = 2
+    };
 }
 

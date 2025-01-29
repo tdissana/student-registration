@@ -82,17 +82,15 @@ void App::updateStudent()
     std::cout << "Select Update Option" << std::endl;
     std::cout << "1. Update Student Id" << std::endl;
     std::cout << "2. Update Student Name" << std::endl;
-    std::cout << "Enter your update choice: ";
-    int updateChoice = 0;
-    std::cin >> updateChoice;
+    int updateChoice = utilities::Utility::getValidInt("Enter your update choice: ");;
 
-    if (updateChoice == 1)
+    if (static_cast<UpdateChoice>(updateChoice) == UpdateChoice::UPDATE_ID)
     {
         int oldId = utilities::Utility::getValidInt("Enter Old Id: ");
         int newId = utilities::Utility::getValidInt("Enter New Id: ");
         dbManager.updateStudentId(oldId, newId);
     }
-    else if (updateChoice == 2)
+    else if (static_cast<UpdateChoice>(updateChoice) == UpdateChoice::UPDATE_NAME)
     {
         int id = utilities::Utility::getValidInt("Enter Id: ");
         std::string newName;
