@@ -1,24 +1,24 @@
 #pragma once
-#include <DBManager.hpp>
+#include <StudentManager.hpp>
 #include <Defs.hpp>
 
 namespace registration
 {
     class App
     {
-        private:
-            void showMenu();
-            Choice getChoice();
-            bool isValidChoice(Choice choice);
-            void createStudent();
-            void removeStudent();
-            void updateStudent();
-            void viewStudent();
-            int exit();
+    private:
+        void showMenu();
+        Choice getChoice();
+        bool isValidChoice(Choice choice);
+        void createStudent();
+        void removeStudent();
+        void updateStudent();
+        void viewStudent();
+        void exit();
 
-            DBManager dbManager {};
+        StudentManager studentManager;
 
-        public:
-            void run();
+    public:
+        void run();
     };
 }

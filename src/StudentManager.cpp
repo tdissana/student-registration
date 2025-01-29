@@ -1,10 +1,10 @@
-#include <DBManager.hpp>
+#include <StudentManager.hpp>
 #include <utility>
 #include <iostream>
 
 using namespace registration;
 
-void DBManager::addStudent(int id, std::string name)
+void StudentManager::addStudent(int id, std::string name)
 {
     auto studentItr = studentDatabase.find(id);
     if (studentItr != studentDatabase.end())
@@ -18,7 +18,7 @@ void DBManager::addStudent(int id, std::string name)
     }
 }
 
-void DBManager::removeStudentById(int id)
+void StudentManager::removeStudentById(int id)
 {
     auto studentItr = studentDatabase.find(id);
     if (studentItr != studentDatabase.end())
@@ -35,7 +35,7 @@ void DBManager::removeStudentById(int id)
     }
 }
 
-void DBManager::updateStudentId(int oldId, int newId)
+void StudentManager::updateStudentId(int oldId, int newId)
 {
     auto newStudentItr = studentDatabase.find(newId);
     if (newStudentItr != studentDatabase.end())
@@ -67,7 +67,7 @@ void DBManager::updateStudentId(int oldId, int newId)
     }
 }
 
-void DBManager::updateStudentName(int id, std::string newName)
+void StudentManager::updateStudentName(int id, std::string newName)
 {
     auto studentItr = studentDatabase.find(id);
     if (studentItr != studentDatabase.end())
@@ -89,7 +89,7 @@ void DBManager::updateStudentName(int id, std::string newName)
     }
 }
 
-void DBManager::viewStudentById(int id)
+void StudentManager::viewStudentById(int id)
 {
     auto studentItr = studentDatabase.find(id);
     if (studentItr != studentDatabase.end())
@@ -110,13 +110,13 @@ void DBManager::viewStudentById(int id)
     }
 }
 
-void DBManager::eraseAllData()
+void StudentManager::eraseAllData()
 {
     for (auto studentItr = studentDatabase.begin(); studentItr != studentDatabase.end(); studentItr++)
     {
-        Student* student = studentItr->second;
+        Student *student = studentItr->second;
         delete student;
         student = nullptr;
-        studentDatabase.erase(studentItr);
     }
+    studentDatabase.clear();
 }

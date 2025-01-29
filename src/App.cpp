@@ -16,7 +16,7 @@ void App::showMenu()
 
 Choice App::getChoice()
 {
-    int choice {};
+    int choice{};
     std::cout << "Enter your choice: ";
     std::cin >> choice;
     return static_cast<Choice>(choice);
@@ -67,7 +67,7 @@ void App::createStudent()
     std::cin >> id;
     std::cout << "Enter Name: ";
     std::cin >> name;
-    dbManager.addStudent(id, name);
+    studentManager.addStudent(id, name);
     run();
 }
 
@@ -77,7 +77,7 @@ void App::removeStudent()
     int id;
     std::cout << "Enter Id: ";
     std::cin >> id;
-    dbManager.removeStudentById(id);
+    studentManager.removeStudentById(id);
     run();
 }
 
@@ -98,7 +98,7 @@ void App::updateStudent()
         std::cin >> oldId;
         std::cout << "Enter New Id: ";
         std::cin >> newId;
-        dbManager.updateStudentId(oldId, newId);
+        studentManager.updateStudentId(oldId, newId);
     }
     else if (updateChoice == 2)
     {
@@ -108,7 +108,7 @@ void App::updateStudent()
         std::cin >> id;
         std::cout << "Enter New Name: ";
         std::cin >> newName;
-        dbManager.updateStudentName(id, newName);
+        studentManager.updateStudentName(id, newName);
     }
     else
     {
@@ -123,14 +123,13 @@ void App::viewStudent()
     int id;
     std::cout << "Enter Id: ";
     std::cin >> id;
-    dbManager.viewStudentById(id);
+    studentManager.viewStudentById(id);
     run();
 }
 
-int App::exit()
+void App::exit()
 {
     std::cout << "Exiting the system......................" << std::endl;
-    dbManager.eraseAllData();
+    studentManager.eraseAllData();
     std::cout << "===============Thank You!===============" << std::endl;
-    return 0;
 }
