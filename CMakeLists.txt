@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyProject)
+project(StudentRegistration)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -12,4 +12,4 @@ file(GLOB SRC_FILES src/*.cpp)
 include_directories(src)
 
 # Create the executable
-add_executable(MyExecutable ${SRC_FILES})
+add_executable(application ${SRC_FILES})
