@@ -9,7 +9,7 @@ void DBManager::addStudent(int id, std::string name)
     auto studentItr = studentDatabase.find(id);
     if (studentItr != studentDatabase.end())
     {
-        std::cout << "Error: Student Id: " << id << " already exists" << std::endl;
+        std::cerr << "Error: Student Id: " << id << " already exists" << std::endl;
     }
     else
     {
@@ -31,7 +31,7 @@ void DBManager::removeStudentById(int id)
     }
     else
     {
-        std::cout << "Error: Student Id: " << id << " doesn't exist" << std::endl;
+        std::cerr << "Error: Student Id: " << id << " doesn't exist" << std::endl;
     }
 }
 
@@ -40,7 +40,7 @@ void DBManager::updateStudentId(int oldId, int newId)
     auto newStudentItr = studentDatabase.find(newId);
     if (newStudentItr != studentDatabase.end())
     {
-        std::cout << "Error: Student Id: " << newId << " already exists" << std::endl;
+        std::cerr << "Error: Student Id: " << newId << " already exists" << std::endl;
     }
     else
     {
@@ -57,12 +57,12 @@ void DBManager::updateStudentId(int oldId, int newId)
             }
             else
             {
-                std::cout << "Error: Student Id: " << oldId << " data corrupted" << std::endl;
+                std::cerr << "Error: Student Id: " << oldId << " data corrupted" << std::endl;
             }
         }
         else
         {
-            std::cout << "Error: Student Id: " << oldId << " doesn't exist" << std::endl;
+            std::cerr << "Error: Student Id: " << oldId << " doesn't exist" << std::endl;
         }
     }
 }
@@ -80,12 +80,12 @@ void DBManager::updateStudentName(int id, std::string newName)
         }
         else
         {
-            std::cout << "Error: Student Id: " << id << " data corrupted" << std::endl;
+            std::cerr << "Error: Student Id: " << id << " data corrupted" << std::endl;
         }
     }
     else
     {
-        std::cout << "Error: Student Id: " << id << " doesn't exist" << std::endl;
+        std::cerr << "Error: Student Id: " << id << " doesn't exist" << std::endl;
     }
 }
 
@@ -101,12 +101,12 @@ void DBManager::viewStudentById(int id)
         }
         else
         {
-            std::cout << "Error: Student Id: " << id << " data corrupted" << std::endl;
+            std::cerr << "Error: Student Id: " << id << " data corrupted" << std::endl;
         }
     }
     else
     {
-        std::cout << "Error: Student Id: " << id << " doesn't exist" << std::endl;
+        std::cerr << "Error: Student Id: " << id << " doesn't exist" << std::endl;
     }
 }
 

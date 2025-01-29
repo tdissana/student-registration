@@ -112,7 +112,7 @@ void App::updateStudent()
     }
     else
     {
-        std::cout << "Error: Invalid Update Choice" << std::endl;
+        std::cerr << "Error: Invalid Update Choice" << std::endl;
     }
     run();
 }
